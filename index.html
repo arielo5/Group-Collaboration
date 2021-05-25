@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/luxon@1.27.0/build/global/luxon.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="./assets/js/script.js" defer></script>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <title>IDK You Pick</title>
+</head>
+
+<body>
+
+    <section class="hero is-success is-small">
+        <!-- Hero head: will stick at the top -->
+        <div class="hero-head">
+            <header class="navbar">
+                <div class="container">
+                    <div class="navbar-brand">
+                        <a class="navbar-item">
+                            <img src="https://bulma.io/images/bulma-type-white.png" alt="Logo">
+                        </a>
+                        <span class="navbar-burger" data-target="navbarMenuHeroC">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </span>
+                    </div>
+                    <div id="navbarMenuHeroC" class="navbar-menu">
+                        <div class="navbar-end">
+                            <a class="navbar-item is-active">
+                                Home
+                            </a>
+                            <a class="navbar-item">
+                                Examples
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+            </header>
+        </div>
+
+        <!-- Hero content: will be in the middle -->
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <p class="title">
+                    IDK You Pick
+                </p>
+                <p class="subtitle">
+                    Date Night
+                </p>
+            </div>
+        </div>
+
+        <!-- Hero footer: will stick at the bottom -->
+        <div class="hero-foot">
+            <nav class="tabs is-boxed is-fullwidth">
+                <div class="container">
+                    <ul>
+                        <li><a>Movies</a></li>
+                        <li><a>TV Series</a></li>
+                        <li><a>Recepies</a></li>
+
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </section>
+
+    <br>
+
+    <div class="columns">
+
+        <div class="column" style="padding: 0px">
+
+            <div class="card">
+
+                <div class="card-content">
+                    <div class="media">
+                        <div class="media-content has-text-centered">
+                            <p class="title">Movie/TV Title</p>
+                            <p class="subtitle">Category</p>
+                        </div>
+                    </div>
+
+                    <div class="card-image">
+                        <figure class="image is-3by4">
+                            <img src="https://mypostercollection.com/wp-content/uploads/2018/03/Avengers-Infinity-War-Poster-Official-2.jpg"
+                                alt="Movie Poster">
+                        </figure>
+                    </div>
+
+                    <div class="content">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Phasellus nec iaculis mauris. <a>@bulmaio</a>.
+                        <a href="#">#css</a> <a href="#">#responsive</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="column" style="padding: 0px">
+
+            <nav class="navbar" role="navigation" aria-label="dropdown navigation">
+                <div class="navbar-menu is-size-4">
+                  <div class="navbar-start">
+                    <div class="navbar-item has-dropdown is-hoverable">
+                      <a class="navbar-link">
+                        Movie
+                      </a>
+              
+                      <div class="navbar-dropdown">
+                        <a class="navbar-item">
+                          Overview
+                        </a>
+                        <a class="navbar-item">
+                          Elements
+                        </a>
+                        <a class="navbar-item">
+                          Components
+                        </a>
+                        <hr class="navbar-divider">
+                        <div class="navbar-item">
+                          Version 0.9.2
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="navbar-menu">
+                    <div class="navbar-start">
+                      <div class="navbar-item has-dropdown is-hoverable">
+                        <a class="navbar-link">
+                          TV Serie
+                        </a>
+                
+                        <div class="navbar-dropdown">
+                          <a class="navbar-item">
+                            Overview
+                          </a>
+                          <a class="navbar-item">
+                            Elements
+                          </a>
+                          <a class="navbar-item">
+                            Components
+                          </a>
+                          <hr class="navbar-divider">
+                          <div class="navbar-item">
+                            Version 0.9.2
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+              
+                  <div class="navbar-end">
+                    <div class="navbar-item has-dropdown is-hoverable">
+                      <a class="navbar-link">
+                        Cuisine
+                      </a>
+              
+                      <div class="navbar-dropdown is-right">
+                        <a class="navbar-item">
+                          Overview
+                        </a>
+                        <a class="navbar-item">
+                          Elements
+                        </a>
+                        <a class="navbar-item">
+                          Components
+                        </a>
+                        <hr class="navbar-divider">
+                        <div class="navbar-item">
+                          Version 0.9.2
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </nav>
+
+              <button class="button is-large is-fullwidth is-link is-rounded is-outlined mt-6">Pick</button>
+
+              <button class="button is-large is-fullwidth is-danger is-rounded is-outlined mt-6">Delete Past Search</button>
+              
+              <section class="hero is-primary mt-6">
+                <div class="hero-body">
+                  <p class="title has-text-centered">
+                    History
+                  </p>
+                  <p class="subtitle">
+                    Everything you need to <strong>create a website</strong> with Bulma
+                  </p>
+                </div>
+              </section>
+
+        </div>
+
+        <div class="column" style="padding: 0px">
+
+            <div class="card">
+
+                <div class="card-content">
+                    <div class="media has-text-centered">
+                        <div class="media-content">
+                            <p class="title">Cuisine</p>
+                            <p class="subtitle">Type</p>
+                        </div>
+                    </div>
+
+                    <div class="card-image">
+                        <figure class="image is-3by4">
+                            <img src="https://cdn.healthyrecipes101.com/wp-content/uploads/2019/12/Healthy-Ratatouille-Recipe.jpg" alt="Food Picture">
+                        </figure>
+                    </div>
+
+                    <div class="content">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Phasellus nec iaculis mauris. <a>@bulmaio</a>.
+                        <a href="#">#css</a> <a href="#">#responsive</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <br>
+
+    <footer class="footer">
+        <div class="content has-text-centered">
+            <p>
+                <strong>Bulma</strong> by <a href="https://jgthms.com">Jeremy Thomas</a>. The source code is licensed
+                <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
+                is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+            </p>
+        </div>
+    </footer>
+
+    <script src="./assets/js/script.js"></script>
+
+</body>
+
+</html>
