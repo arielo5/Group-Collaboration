@@ -1,0 +1,24 @@
+@media screen and (max-width: 1023px) {
+    .navbar .container {
+        display: flex;
+        justify-content: space-around;
+    }
+    
+}
+
+#movieShBtn:hover {
+    background-color: rgb(26, 180, 252);
+}
+
+#cuisineShBtn:hover {
+    background-color: rgb(26, 180, 252);
+}
+
+#bothShBtn:hover {
+    background-color: rgb(26, 180, 252);
+}
+
+#historyDelBtn:hover {
+    background-color: rgb(241, 141, 141);
+}
+
