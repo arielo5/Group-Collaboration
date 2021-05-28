@@ -1,18 +1,25 @@
-let cuisineDropdown;
+let cuisineDropdown = document.querySelector("#cuisineDropdown");
+let cuisineImgPlaceholder = document.querySelector("#cuisineImgPlaceholder");
+let cuisineOnlyButton = document.querySelector("#cuisineShBtn");
+let cuisinePicture = document.querySelector("#cuisinePicture");
 let ingredientString;
-let orderedListForRecipe = document.querySelector("#forRecipe");
+let orderedListForRecipe = document.querySelector("#orderedListForRecipe");
 let randomRecipeRequest;
+let recipeIdentifier;
+let recipeImageLink;
 let recipeTextArea;
+let recipeTitle;
+let recipeTitleArea = document.querySelector("#recipeTitle");
 let stepDetails;
 let stepIngredients;
 let steps;
 let thingsToMake;
-let userSelectedCuisine;
+let userSelectedCuisine = "";
 
 
 // Fetches the data for a specific recipe
-function getRecipeDetails () {
-    fetch('https://api.spoonacular.com/recipes/324694/analyzedInstructions?apiKey=6bcf2249e71b4f518c9bc66ffb045b87')
+function getRecipeDetails (recipeIdentifier) {
+    fetch('https://api.spoonacular.com/recipes/' + recipeIdentifier + '/analyzedInstructions?apiKey=6bcf2249e71b4f518c9bc66ffb045b87')
         .then(function (response) {
         return response.json();
     })
@@ -32,17 +39,25 @@ function getRandomRecipe (recipeRequestLink) {
         return response.json();
     })
         .then(function (data) {
-        console.log(data);
+        recipeIdentifier = data.results[0].id;
+        recipeImageLink = data.results[0].image;
+        recipeTitle = data.results[0].title;
+        recipeTitleArea.innerHTML = recipeTitle;
+        cuisinePicture.setAttribute("src", recipeImageLink);
+        cuisineImgPlaceholder.setAttribute("class", "image is-3by4");
+        getRecipeDetails(recipeIdentifier);
     });
 }
 
-// Gets the user selected cuisine from the cuisine dropdown
+// Gets the user selected cuisine from the cuisine dropdown and creates a link to be fetched from
 function getCuisineSelection () {
-    userSelectedCuisine = cuisineDropdown.value;
-    if (userSelectedCuisine === "Default"){
-        randomRecipeRequest = 'https://api.spoonacular.com/recipes/random?number=1&apiKey=6bcf2249e71b4f518c9bc66ffb045b87';
+    if (userSelectedCuisine === ""){
+        console.log("this");
+        randomRecipeRequest = 'https://api.spoonacular.com/recipes/complexSearch?number=1&sort=random&type=main course&apiKey=6bcf2249e71b4f518c9bc66ffb045b87';
     } else {
-        randomRecipeRequest = 'https://api.spoonacular.com/recipes/random?number=1&tags=' + userSelectedCuisine + '&apiKey=6bcf2249e71b4f518c9bc66ffb045b87';
+        console.log(userSelectedCuisine);
+        randomRecipeRequest = 'https://api.spoonacular.com/recipes/complexSearch?number=1&sort=random&type=main course&cuisine=' + userSelectedCuisine + '&apiKey=6bcf2249e71b4f518c9bc66ffb045b87';
+        console.log(randomRecipeRequest);
     }
     getRandomRecipe(randomRecipeRequest);
 }
@@ -81,4 +96,19 @@ function parseIngredientsIntoString () {
     }
 }
 
-//getRecipeDetails();
+// Clears out the area containing recipe information so it can be populated cleanly
+function clearRecipeArea () {
+    do{
+        orderedListForRecipe.removeChild(orderedListForRecipe.childNodes[0]);
+    }while(orderedListForRecipe.firstChild);
+}
+
+// When user selects a type of cuisine it is saved as a variable
+function setUserCuisineChoice (event) {
+    event.preventDefault();
+    userSelectedCuisine = event.target; 
+    userSelectedCuisine = userSelectedCuisine.innerHTML.trim();
+}
+
+cuisineDropdown.addEventListener("click", setUserCuisineChoice);
+cuisineOnlyButton.addEventListener("click", getCuisineSelection);

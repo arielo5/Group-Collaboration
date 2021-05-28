@@ -90,7 +90,7 @@
             </span>
           </button>
         </div>
-        <div class="dropdown-menu" id="dropdown-menu4" role="menu">
+        <div class="dropdown-menu" id="cuisineDropdown" role="menu">
           <div class="dropdown-content has-background-success">
             <a href="" class="dropdown-item">
               Italian
@@ -207,22 +207,19 @@
         <div class="card-content">
           <div class="media has-text-centered">
             <div class="media-content">
-              <p class="title">Cuisine</p>
+              <p id="recipeTitle" class="title">Cuisine</p>
               <p class="subtitle">Type</p>
             </div>
           </div>
 
           <div class="card-image">
-            <figure class="image is-3by4">
-              <img src="https://cdn.healthyrecipes101.com/wp-content/uploads/2019/12/Healthy-Ratatouille-Recipe.jpg"
+            <figure id="cuisineImgPlaceholder" class="image is-3by4 is-hidden">
+              <img id="cuisinePicture" src=""
                 alt="Food Picture">
             </figure>
           </div>
 
-          <div class="content">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Phasellus nec iaculis mauris. <a>@bulmaio</a>.
-            <a href="">#css</a> <a href="">#responsive</a>
+          <div id="orderedListForRecipe" class="content">
           </div>
         </div>
       </div>
@@ -241,7 +238,7 @@
     </div>
   </footer>
 
-  <script src="./assets/js/script.js"></script>
+
 
 </body>
 
