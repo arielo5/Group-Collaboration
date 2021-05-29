@@ -17,15 +17,30 @@ let thingsToMake;
 let typeOfCuisineText = document.querySelector("#selectedTypeOfCuisineField");
 let userSelectedCuisine = "";
 
+let userSelectedMovie = "";
+let movieDropdown = document.querySelector("#movieDropdown");
+let typeOfMovieText = document.querySelector("#selectedTypeOfMovieField")
+let movieImgPlaceholder = document.querySelector("#movieImgPlaceholder");
+let userSelectedMovieGenre = "";
+let queryString;
+
+
 $(document).ready(function() {
     let api_key = 'd748f076b1e977b08676c44b46816848';
     let mainURL = `http://api.themoviedb.org/3/discover/movie/?api_key=${api_key}&language=en-US&sort_by=popularity.desc&include_adult=false&with_genres=`;
 
     //listener to movie button
     $('.movie-moods').on('click', function() {
-        let genreEl = $(this).val();
-        let queryURL =
-            `${mainURL}${genreEl}` + '&page=' + [Math.floor(Math.random() * 9 + 1)] + '/';
+
+        if (userSelectedMovieGenre === "") {
+            queryURL =
+                `${mainURL}` + '&page=' + [Math.floor(Math.random() * 9 + 1)] + '/';
+        } else {
+            queryURL =
+                `${mainURL}` + userSelectedMovieGenre + '&page=' + [Math.floor(Math.random() * 9 + 1)] + '/';
+        }
+        console.log(queryURL);
+
         ajaxMovieCall(queryURL);
     });
     // call function
@@ -60,6 +75,7 @@ $(document).ready(function() {
         let ratingMovie = movie.vote_average;
         document.getElementById("ratings").innerHTML = "Rating: " + ratingMovie;
         let moviesList = $('#movies-list');
+        movieImgPlaceholder.setAttribute("class", "image is-3by4");
 
 
         moviesList.append(movieContent);
@@ -180,5 +196,17 @@ function setUserCuisineChoice(event) {
     typeOfCuisineText.innerHTML = "Type of Cuisine: " + userSelectedCuisine;
 }
 
+
+function setUserMovieChoice(event) {
+    event.preventDefault();
+    userSelectedMovie = event.target;
+    userSelectedMovieGenre = userSelectedMovie.getAttribute("value");
+    userSelectedMovie = userSelectedMovie.innerHTML.trim();
+    typeOfMovieText.innerHTML = "Genre of Movie: " + userSelectedMovie;
+    console.log(userSelectedMovieGenre);
+
+}
+
+movieDropdown.addEventListener("click", setUserMovieChoice);
 cuisineDropdown.addEventListener("click", setUserCuisineChoice);
 cuisineOnlyButton.addEventListener("click", getCuisineSelection);

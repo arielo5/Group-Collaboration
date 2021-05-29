@@ -4,18 +4,20 @@
 <head>
 
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/luxon@1.27.0/build/global/luxon.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-  <script src="./assets/js/script.js" defer></script>
-  <link rel="stylesheet" href="./assets/css/style.css">
-  <title>IDK You Pick</title>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/luxon@1.27.0/build/global/luxon.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="./assets/js/script.js" defer></script>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <title>IDK You Pick</title>
+
 
 
 </head>
@@ -39,6 +41,7 @@
 
 <nav class="navbar is-success is-flex" role="navigation" aria-label="dropdown navigation">
 
+
   
   <div class="container has-background-success ml-0">
     <div class="navbar-start ">
@@ -47,76 +50,131 @@
           <button class="button is-success is-size-4" aria-haspopup="true" aria-controls="dropdown-menu4">
 
 
+
             <span>Movies</span>
             <span class="icon is-small">
               <i class="fas fa-angle-down" aria-hidden="true"></i>
             </span>
           </button>
 
-
-        </div>
-        <div class="dropdown-menu" id="dropdown-menu4" role="menu">
-          <div class="dropdown-content has-background-success">
-            <a type="button" id="movieRandom" class="dropdown-item">
+                </div>
+                <div class="dropdown-menu" id="movieDropdown" role="menu">
+                    <div class="dropdown-content has-background-success">
+                        <a type="button" value="" id="movieRandom" class="dropdown-item">
               Random
             </a>
-            <a type="button" value="28" id="action" class="dropdown-item">
+                        <a type="button" value="28" id="action" class="dropdown-item"> 
               Action
             </a>
-            <a type="button" value="12" id="adventure" class="dropdown-item">
+                        <a type="button" value="12" id="adventure" class="dropdown-item">
               Adventure
             </a>
-            <a type="button" value="16" id="animation" class="dropdown-item">
+                        <a type="button" value="16" id="animation" class="dropdown-item">
               Animation
             </a>
-            <a type="button" value="35" id="comedy" class="dropdown-item">
+                        <a type="button" value="35" id="comedy" class="dropdown-item">
               Comedy
             </a>
-            <a type="button" value="80" id="crime" class="dropdown-item">
+                        <a type="button" value="80" id="crime" class="dropdown-item">
               Crime
             </a>
-            <a type="button" value="99" id="documentary" class="dropdown-item">
+                        <a type="button" value="99" id="documentary" class="dropdown-item">
               Documentary
             </a>
-            <a type="button" value="18" id="story-rich" class="dropdown-item">
+                        <a type="button" value="18" id="story-rich" class="dropdown-item">
               Drama
             </a>
-            <a type="button" value="10751" id="family-friendly" class="dropdown-item">
+                        <a type="button" value="10751" id="family-friendly" class="dropdown-item">
               Family
             </a>
-            <a type="button" value="14" id="fantasy" class="dropdown-item">
+                        <a type="button" value="14" id="fantasy" class="dropdown-item">
               Fantasy
             </a>
-            <a type="button" value="36" id="history" class="dropdown-item">
+                        <a type="button" value="36" id="history" class="dropdown-item">
               History
             </a>
-            <a type="button" value="27" id="horror" class="dropdown-item">
+                        <a type="button" value="27" id="horror" class="dropdown-item">
               Horror
             </a>
-            <a type="button" value="10402" id="music" class="dropdown-item">
+                        <a type="button" value="10402" id="music" class="dropdown-item">
               Music
             </a>
-            <a type="button" value="9648" id="mystery" class="dropdown-item">
+                        <a type="button" value="9648" id="mystery" class="dropdown-item">
               Mystery
             </a>
-            <a type="button" value="10749" id="romance" class="dropdown-item">
+                        <a type="button" value="10749" id="romance" class="dropdown-item">
               Romance
             </a>
-            <a type="button" value="878" id="science-fiction" class="dropdown-item">
+                        <a type="button" value="878" id="science-fiction" class="dropdown-item">
               Sci-fi
             </a>
-            <a type="button" value="10770" id="tv-movie" class="dropdown-item">
+                        <a type="button" value="10770" id="tv-movie" class="dropdown-item">
               TV Movie
             </a>
-            <a type="button" value="53" id="thriller" class="dropdown-item">
+                        <a type="button" value="53" id="thriller" class="dropdown-item">
               Thriller
             </a>
-            <a type="button" value="10752" id="war" class="dropdown-item">
+                        <a type="button" value="10752" id="war" class="dropdown-item">
               War
             </a>
-            <a type="button" value="37" id="western" class="dropdown-item">
+                        <a type="button" value="37" id="western" class="dropdown-item">
               Western
             </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="navbar-end">
+        <div class="dropdown is-hoverable">
+            <div class="dropdown-trigger">
+                <button class="button is-success is-size-4" aria-haspopup="true" aria-controls="dropdown-menu4">
+
+          <span>Cuisine</span>
+          <span class="icon is-small">
+            <i class="fas fa-angle-down" aria-hidden="true"></i>
+          </span>
+        </button>
+
+            </div>
+            <div class="dropdown-menu" id="cuisineDropdown" role="menu">
+                <div class="dropdown-content has-background-success">
+                    <a href="" class="dropdown-item">
+            Random
+          </a>
+                    <a href="" class="dropdown-item">
+            Italian
+          </a>
+                    <a href="" class="dropdown-item">
+            Greek
+          </a>
+                    <a href="" class="dropdown-item">
+            Mediterranean
+          </a>
+                    <a href="" class="dropdown-item">
+            Thai
+          </a>
+                    <a href="" class="dropdown-item">
+            French
+          </a>
+                    <a href="" class="dropdown-item">
+            Chinese
+          </a>
+                    <a href="" class="dropdown-item">
+            Japanese
+          </a>
+                    <a href="" class="dropdown-item">
+            Spanish
+          </a>
+                    <a href="" class="dropdown-item">
+            Indian
+          </a>
+                    <a href="" class="dropdown-item">
+            Mexican
+          </a>
+
                 </div>
             </div>
         </div>
@@ -174,8 +232,10 @@
         </div>
       </div>
     </div>
+
   </div>
   </div>
+
 
 </nav>
 
@@ -247,7 +307,9 @@
                     </div>
 
                     <div class="card-image">
-                        <figure class="image is-5by3 is-hidden" id="pic">
+
+                        <figure class="image is-5by3 is-hidden" id="movieImgPlaceholder">
+
                             <img src="" alt="Movie Poster" id="picturelink">
                         </figure>
                     </div>
@@ -280,7 +342,9 @@
                     </div>
 
                     <div class="content">
-                      <ol id="orderedListForRecipe"></ol>
+
+                        <ol id="orderedListForRecipe"></ol>
+
                     </div>
                 </div>
             </div>
