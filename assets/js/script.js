@@ -25,7 +25,7 @@ $(document).ready(function() {
     $('.movie-moods').on('click', function() {
         let genreEl = $(this).val();
         let queryURL =
-            `${mainURL}${genreEl}` + '&page=' + [Math.floor(Math.random() * 9 + 1)];
+            `${mainURL}${genreEl}` + '&page=' + [Math.floor(Math.random() * 9 + 1)] + '/';
         ajaxMovieCall(queryURL);
     });
     // call function
@@ -121,8 +121,7 @@ function getRandomRecipe(recipeRequestLink) {
 
 // Gets the user selected cuisine from the cuisine dropdown and creates a link to be fetched from
 function getCuisineSelection() {
-    if (userSelectedCuisine === "") {
-        console.log("this");
+    if (userSelectedCuisine === "" || userSelectedCuisine === "Random") {
         randomRecipeRequest = 'https://api.spoonacular.com/recipes/complexSearch?number=1&sort=random&type=main course&apiKey=6bcf2249e71b4f518c9bc66ffb045b87';
     } else {
         console.log(userSelectedCuisine);
