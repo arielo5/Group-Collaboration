@@ -177,7 +177,7 @@ function setUserCuisineChoice(event) {
     event.preventDefault();
     userSelectedCuisine = event.target;
     userSelectedCuisine = userSelectedCuisine.innerHTML.trim();
-    typeOfCuisineText.innerHTML = userSelectedCuisine;
+    typeOfCuisineText.innerHTML = "Type of Cuisine: " + userSelectedCuisine;
 }
 
 cuisineDropdown.addEventListener("click", setUserCuisineChoice);
