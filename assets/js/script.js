@@ -1,3 +1,22 @@
+let cuisineDropdown = document.querySelector("#cuisineDropdown");
+let cuisineImgPlaceholder = document.querySelector("#cuisineImgPlaceholder");
+let cuisineOnlyButton = document.querySelector("#cuisineShBtn");
+let cuisinePicture = document.querySelector("#cuisinePicture");
+let ingredientString;
+let orderedListForRecipe = document.querySelector("#orderedListForRecipe");
+let randomRecipeRequest;
+let recipeIdentifier;
+let recipeImageLink;
+let recipeTextArea;
+let recipeTitle;
+let recipeTitleArea = document.querySelector("#recipeTitle");
+let stepDetails;
+let stepIngredients;
+let steps;
+let thingsToMake;
+let typeOfCuisineText = document.querySelector("#selectedTypeOfCuisineField");
+let userSelectedCuisine = "";
+
 $(document).ready(function() {
     let api_key = 'd748f076b1e977b08676c44b46816848';
     let mainURL = `https://api.themoviedb.org/3/discover/movie/?api_key=${api_key}&language=en-US&sort_by=popularity.desc&include_adult=false&with_genres=`;
@@ -67,25 +86,6 @@ $(document).ready(function() {
         }
     }
 });
-
-let cuisineDropdown = document.querySelector("#cuisineDropdown");
-let cuisineImgPlaceholder = document.querySelector("#cuisineImgPlaceholder");
-let cuisineOnlyButton = document.querySelector("#cuisineShBtn");
-let cuisinePicture = document.querySelector("#cuisinePicture");
-let ingredientString;
-let orderedListForRecipe = document.querySelector("#orderedListForRecipe");
-let randomRecipeRequest;
-let recipeIdentifier;
-let recipeImageLink;
-let recipeTextArea;
-let recipeTitle;
-let recipeTitleArea = document.querySelector("#recipeTitle");
-let stepDetails;
-let stepIngredients;
-let steps;
-let thingsToMake;
-let userSelectedCuisine = "";
-
 
 // Fetches the data for a specific recipe
 function getRecipeDetails(recipeIdentifier) {
@@ -178,6 +178,7 @@ function setUserCuisineChoice(event) {
     event.preventDefault();
     userSelectedCuisine = event.target;
     userSelectedCuisine = userSelectedCuisine.innerHTML.trim();
+    typeOfCuisineText.innerHTML = userSelectedCuisine;
 }
 
 cuisineDropdown.addEventListener("click", setUserCuisineChoice);
