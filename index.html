@@ -56,6 +56,9 @@
         </div>
         <div class="dropdown-menu" id="dropdown-menu4" role="menu">
           <div class="dropdown-content has-background-success">
+            <a type="button" id="movieRandom" class="dropdown-item">
+              Random
+            </a>
             <a type="button" value="28" id="action" class="dropdown-item">
               Action
             </a>
@@ -135,6 +138,9 @@
       <div class="dropdown-menu" id="cuisineDropdown" role="menu">
         <div class="dropdown-content has-background-success">
           <a href="" class="dropdown-item">
+            Random
+          </a>
+          <a href="" class="dropdown-item">
             Italian
           </a>
           <a href="" class="dropdown-item">
@@ -178,8 +184,8 @@
         <nav class="tabs is-boxed is-fullwidth">
             <div class="container">
                 <ul>
-                    <li><a>Type of Movie</a></li>
-                    <li><a>Type of Cuisine</a></li>
+                    <li id="selectedTypeOfMovieField"><a>Type of Movie</a></li>
+                    <li id="selectedTypeOfCuisineField"><a>Type of Cuisine</a></li>
                 </ul>
             </div>
         </nav>
@@ -272,7 +278,8 @@
                         </figure>
                     </div>
 
-                    <div id="orderedListForRecipe" class="content">
+                    <div class="content">
+                      <ol id="orderedListForRecipe"></ol>
                     </div>
                 </div>
             </div>
