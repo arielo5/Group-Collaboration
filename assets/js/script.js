@@ -19,7 +19,7 @@ let userSelectedCuisine = "";
 
 $(document).ready(function() {
     let api_key = 'd748f076b1e977b08676c44b46816848';
-    let mainURL = `https://api.themoviedb.org/3/discover/movie/?api_key=${api_key}&language=en-US&sort_by=popularity.desc&include_adult=false&with_genres=`;
+    let mainURL = `http://api.themoviedb.org/3/discover/movie/?api_key=${api_key}&language=en-US&sort_by=popularity.desc&include_adult=false&with_genres=`;
 
     //listener to movie button
     $('.movie-moods').on('click', function() {
