@@ -29,7 +29,6 @@
 
 #orderedListForRecipe {
     color:white;
-    list-style: square;
     list-style-position: inside;
     font-display: inside;
 }
