@@ -41,69 +41,70 @@ let queryString;
         }
         ajaxMovieCall(queryURL);
     }
-    // call function
-    function ajaxMovieCall(queryURL) {
-        $.ajax({
-            url: queryURL,
-            method: 'GET',
-            success: function(response) {
-                console.log(response);
-            },
-            error: function(response) {
-                console.log(response);
-            },
-        }).then(function(response) {
+    
+// call function
+function ajaxMovieCall(queryURL) {
+    $.ajax({
+        url: queryURL,
+        method: 'GET',
+        success: function (response) {
             console.log(response);
-            console.log(response.results[0].poster_path);
-            renderMovies(response, 1);
-        });
-    }
-    //fuction that renders movie
-    function renderMovie(movie) {
-        let posterImageCode = movie.backdrop_path;
-        let posterImageURL = `https://image.tmdb.org/t/p/w500/${posterImageCode}`;
-        document.getElementById("picturelink").src = posterImageURL;
+        },
+        error: function (response) {
+            console.log(response);
+        },
+    }).then(function (response) {
+        console.log(response);
+        console.log(response.results[0].poster_path);
+        renderMovies(response, 1);
+    });
+}
+//fuction that renders movie
+function renderMovie(movie) {
+    let posterImageCode = movie.backdrop_path;
+    let posterImageURL = `https://image.tmdb.org/t/p/w500/${posterImageCode}`;
+    document.getElementById("picturelink").src = posterImageURL;
 
-        let titleMovie = movie.title;
-        document.getElementById("movieT").innerHTML = titleMovie;
-        let overviewMovie = movie.overview;
-        document.getElementById("overview").innerHTML = "Synopsis: " + overviewMovie;
-        let releaseMovie = movie.release_date;
-        document.getElementById("release").innerHTML = "Release Date: " + releaseMovie;
-        let ratingMovie = movie.vote_average;
-        document.getElementById("ratings").innerHTML = "Rating: " + ratingMovie;
-        let moviesList = $('#movies-list');
-        movieImgPlaceholder.setAttribute("class", "image is-5by3");
-    }
+    let titleMovie = movie.title;
+    document.getElementById("movieT").innerHTML = titleMovie;
+    let overviewMovie = movie.overview;
+    document.getElementById("overview").innerHTML = "Synopsis: " + overviewMovie;
+    let releaseMovie = movie.release_date;
+    document.getElementById("release").innerHTML = "Release Date: " + releaseMovie;
+    let ratingMovie = movie.vote_average;
+    document.getElementById("ratings").innerHTML = "Rating: " + ratingMovie;
+    let moviesList = $('#movies-list');
+    movieImgPlaceholder.setAttribute("class", "image is-5by3");
+}
 
-    function cleanMoviesList(movie) {
-        let moviesList = $('#movies-list');
-        moviesList.empty();
-    }
-    //generating random number
-    function getRandomMovie(movies) {
-        let randomNumber = Math.floor(Math.random() * movies.results.length);
-        let movie = movies.results[randomNumber];
+function cleanMoviesList(movie) {
+    let moviesList = $('#movies-list');
+    moviesList.empty();
+}
+//generating random number
+function getRandomMovie(movies) {
+    let randomNumber = Math.floor(Math.random() * movies.results.length);
+    let movie = movies.results[randomNumber];
 
-        return movie;
-    }
-    //for loop if user would like to display more than one movie
-    function renderMovies(movies, length) {
-        cleanMoviesList();
+    return movie;
+}
+//for loop if user would like to display more than one movie
+function renderMovies(movies, length) {
+    cleanMoviesList();
 
-        for (let i = 0; i < length; i++) {
-            let randomMovie = getRandomMovie(movies);
-            renderMovie(randomMovie);
-        }
+    for (let i = 0; i < length; i++) {
+        let randomMovie = getRandomMovie(movies);
+        renderMovie(randomMovie);
     }
+}
 
 // Fetches the data for a specific recipe
 function getRecipeDetails(recipeIdentifier) {
     fetch('https://api.spoonacular.com/recipes/' + recipeIdentifier + '/analyzedInstructions?apiKey=6bcf2249e71b4f518c9bc66ffb045b87')
-        .then(function(response) {
+        .then(function (response) {
             return response.json();
         })
-        .then(function(data) {
+        .then(function (data) {
             console.log(data);
             console.log(data[0].steps);
             steps = data[0].steps;
@@ -114,10 +115,10 @@ function getRecipeDetails(recipeIdentifier) {
 // Takes in the user specified search criteria and uses it to find them a random recipe matching that criteria
 function getRandomRecipe(recipeRequestLink) {
     fetch(recipeRequestLink)
-        .then(function(response) {
+        .then(function (response) {
             return response.json();
         })
-        .then(function(data) {
+        .then(function (data) {
             recipeIdentifier = data.results[0].id;
             recipeImageLink = data.results[0].image;
             recipeTitle = data.results[0].title;
@@ -206,7 +207,7 @@ function displayIngredientsBetter (recipeIdentifier) {
 }
 
 // Handles both searches for when the pick both button is pressed
-function pickBothHandle () {
+function pickBothHandle() {
     getCuisineSelection();
     createMovieQueryURL();
 }
