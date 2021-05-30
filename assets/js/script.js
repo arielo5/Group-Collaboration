@@ -3,7 +3,9 @@ let cuisineImgPlaceholder = document.querySelector("#cuisineImgPlaceholder");
 let cuisineOnlyButton = document.querySelector("#cuisineShBtn");
 let cuisinePicture = document.querySelector("#cuisinePicture");
 let ingredientString;
+let movieOnlyButton = document.querySelector("#movieShBtn");
 let orderedListForRecipe = document.querySelector("#orderedListForRecipe");
+let pickBothButton = document.querySelector("#bothShBtn");
 let randomRecipeRequest;
 let recipeIdentifier;
 let recipeImageLink;
@@ -16,7 +18,6 @@ let steps;
 let thingsToMake;
 let typeOfCuisineText = document.querySelector("#selectedTypeOfCuisineField");
 let userSelectedCuisine = "";
-
 let userSelectedMovie = "";
 let movieDropdown = document.querySelector("#movieDropdown");
 let typeOfMovieText = document.querySelector("#selectedTypeOfMovieField")
@@ -25,13 +26,12 @@ let userSelectedMovieGenre = "";
 let queryString;
 
 
-$(document).ready(function() {
+//$(document).ready(function() {
     let api_key = 'd748f076b1e977b08676c44b46816848';
     let mainURL = `http://api.themoviedb.org/3/discover/movie/?api_key=${api_key}&language=en-US&sort_by=popularity.desc&include_adult=false&with_genres=`;
 
     //listener to movie button
-    $('.movie-moods').on('click', function() {
-
+    function createMovieQueryURL() {
         if (userSelectedMovieGenre === "") {
             queryURL =
                 `${mainURL}` + '&page=' + [Math.floor(Math.random() * 9 + 1)] + '/';
@@ -39,10 +39,8 @@ $(document).ready(function() {
             queryURL =
                 `${mainURL}` + userSelectedMovieGenre + '&page=' + [Math.floor(Math.random() * 9 + 1)] + '/';
         }
-        console.log(queryURL);
-
         ajaxMovieCall(queryURL);
-    });
+    }
     // call function
     function ajaxMovieCall(queryURL) {
         $.ajax({
@@ -76,9 +74,6 @@ $(document).ready(function() {
         document.getElementById("ratings").innerHTML = "Rating: " + ratingMovie;
         let moviesList = $('#movies-list');
         movieImgPlaceholder.setAttribute("class", "image is-3by4");
-
-
-        moviesList.append(movieContent);
     }
 
     function cleanMoviesList(movie) {
@@ -101,7 +96,7 @@ $(document).ready(function() {
             renderMovie(randomMovie);
         }
     }
-});
+//});
 
 // Fetches the data for a specific recipe
 function getRecipeDetails(recipeIdentifier) {
@@ -138,7 +133,7 @@ function getRandomRecipe(recipeRequestLink) {
 // Gets the user selected cuisine from the cuisine dropdown and creates a link to be fetched from
 function getCuisineSelection() {
     if (userSelectedCuisine === "" || userSelectedCuisine === "Random") {
-        randomRecipeRequest = 'https://api.spoonacular.com/recipes/complexSearch?number=1&sort=random&type=main course&apiKey=6bcf2249e71b4f518c9bc66ffb045b87';
+        randomRecipeRequest = 'https://api.spoonacular.com/recipes/complexSearch?number=1&sort=random&type=main course&&apiKey=6bcf2249e71b4f518c9bc66ffb045b87';
     } else {
         console.log(userSelectedCuisine);
         randomRecipeRequest = 'https://api.spoonacular.com/recipes/complexSearch?number=1&sort=random&type=main course&cuisine=' + userSelectedCuisine + '&apiKey=6bcf2249e71b4f518c9bc66ffb045b87';
@@ -188,7 +183,7 @@ function clearRecipeArea() {
     } while (orderedListForRecipe.firstChild);
 }
 
-// When user selects a type of cuisine it is saved as a variable
+// When user selects a type of cuisine it is saved as a variable and updated on the page
 function setUserCuisineChoice(event) {
     event.preventDefault();
     userSelectedCuisine = event.target;
@@ -196,7 +191,7 @@ function setUserCuisineChoice(event) {
     typeOfCuisineText.innerHTML = "Type of Cuisine: " + userSelectedCuisine;
 }
 
-
+// When user selects a genre of movie it is saved as a variable and updated on the page
 function setUserMovieChoice(event) {
     event.preventDefault();
     userSelectedMovie = event.target;
@@ -207,6 +202,14 @@ function setUserMovieChoice(event) {
 
 }
 
-movieDropdown.addEventListener("click", setUserMovieChoice);
+// Handles both searches for when the pick both button is pressed
+function pickBothHandle () {
+    getCuisineSelection();
+    createMovieQueryURL();
+}
+
 cuisineDropdown.addEventListener("click", setUserCuisineChoice);
 cuisineOnlyButton.addEventListener("click", getCuisineSelection);
+movieDropdown.addEventListener("click", setUserMovieChoice);
+movieOnlyButton.addEventListener("click", createMovieQueryURL);
+pickBothButton.addEventListener("click", pickBothHandle);
