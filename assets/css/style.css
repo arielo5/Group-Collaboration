@@ -12,19 +12,19 @@
 }
 
 #movieShBtn:hover {
-    background-color: black;
+    background-color: rgb(124, 182, 248);
 }
 
 #cuisineShBtn:hover {
-    background-color: black;
+    background-color: rgb(124, 182, 248);
 }
 
 #bothShBtn:hover {
-    background-color: black;
+    background-color: rgb(124, 182, 248);
 }
 
 #historyDelBtn:hover {
-    background-color:black;
+    background-color:rgb(238, 127, 127);
 }
 
 #orderedListForRecipe {
