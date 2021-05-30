@@ -73,7 +73,7 @@ let queryString;
         let ratingMovie = movie.vote_average;
         document.getElementById("ratings").innerHTML = "Rating: " + ratingMovie;
         let moviesList = $('#movies-list');
-        movieImgPlaceholder.setAttribute("class", "image is-3by4");
+        movieImgPlaceholder.setAttribute("class", "image is-5by3");
     }
 
     function cleanMoviesList(movie) {
@@ -123,7 +123,7 @@ function getRandomRecipe(recipeRequestLink) {
             recipeTitle = data.results[0].title;
             recipeTitleArea.innerHTML = recipeTitle;
             cuisinePicture.setAttribute("src", recipeImageLink);
-            cuisineImgPlaceholder.setAttribute("class", "image is-3by4");
+            cuisineImgPlaceholder.setAttribute("class", "image is-5by3");
             displayIngredientsBetter(recipeIdentifier);
             getRecipeDetails(recipeIdentifier);
         });
