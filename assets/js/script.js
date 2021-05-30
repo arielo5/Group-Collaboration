@@ -4,7 +4,9 @@ let cuisineOnlyButton = document.querySelector("#cuisineShBtn");
 let cuisinePicture = document.querySelector("#cuisinePicture");
 let ingredientString;
 let listOfIngredients;
+let movieOnlyButton = document.querySelector("#movieShBtn");
 let orderedListForRecipe = document.querySelector("#orderedListForRecipe");
+let pickBothButton = document.querySelector("#bothShBtn");
 let randomRecipeRequest;
 let recipeIdentifier;
 let recipeImageLink;
@@ -14,7 +16,6 @@ let recipeTitleArea = document.querySelector("#recipeTitle");
 let stepDetails;
 let stepIngredients;
 let steps;
-let thingsToMake;
 let typeOfCuisineText = document.querySelector("#selectedTypeOfCuisineField");
 let unorderedIngredientList = document.querySelector("#listForIngredients");
 let userSelectedCuisine = "";
@@ -26,13 +27,11 @@ let userSelectedMovieGenre = "";
 let queryString;
 
 
-$(document).ready(function() {
     let api_key = 'd748f076b1e977b08676c44b46816848';
     let mainURL = `http://api.themoviedb.org/3/discover/movie/?api_key=${api_key}&language=en-US&sort_by=popularity.desc&include_adult=false&with_genres=`;
 
     //listener to movie button
-    $('.movie-moods').on('click', function() {
-
+    function createMovieQueryURL() {
         if (userSelectedMovieGenre === "") {
             queryURL =
                 `${mainURL}` + '&page=' + [Math.floor(Math.random() * 9 + 1)] + '/';
@@ -40,10 +39,8 @@ $(document).ready(function() {
             queryURL =
                 `${mainURL}` + userSelectedMovieGenre + '&page=' + [Math.floor(Math.random() * 9 + 1)] + '/';
         }
-        console.log(queryURL);
-
         ajaxMovieCall(queryURL);
-    });
+    }
     // call function
     function ajaxMovieCall(queryURL) {
         $.ajax({
@@ -77,9 +74,6 @@ $(document).ready(function() {
         document.getElementById("ratings").innerHTML = "Rating: " + ratingMovie;
         let moviesList = $('#movies-list');
         movieImgPlaceholder.setAttribute("class", "image is-3by4");
-
-
-        moviesList.append(movieContent);
     }
 
     function cleanMoviesList(movie) {
@@ -102,7 +96,6 @@ $(document).ready(function() {
             renderMovie(randomMovie);
         }
     }
-});
 
 // Fetches the data for a specific recipe
 function getRecipeDetails(recipeIdentifier) {
@@ -113,7 +106,6 @@ function getRecipeDetails(recipeIdentifier) {
         .then(function(data) {
             console.log(data);
             console.log(data[0].steps);
-            thingsToMake = data.length
             steps = data[0].steps;
             goThroughRecipeSteps();
         });
@@ -140,7 +132,7 @@ function getRandomRecipe(recipeRequestLink) {
 // Gets the user selected cuisine from the cuisine dropdown and creates a link to be fetched from
 function getCuisineSelection() {
     if (userSelectedCuisine === "" || userSelectedCuisine === "Random") {
-        randomRecipeRequest = 'https://api.spoonacular.com/recipes/complexSearch?number=1&sort=random&type=main course&apiKey=6bcf2249e71b4f518c9bc66ffb045b87';
+        randomRecipeRequest = 'https://api.spoonacular.com/recipes/complexSearch?number=1&sort=random&type=main course&&apiKey=6bcf2249e71b4f518c9bc66ffb045b87';
     } else {
         randomRecipeRequest = 'https://api.spoonacular.com/recipes/complexSearch?number=1&sort=random&type=main course&cuisine=' + userSelectedCuisine + '&apiKey=6bcf2249e71b4f518c9bc66ffb045b87';
     }
@@ -174,7 +166,7 @@ function clearIngredientArea() {
     }
 }
 
-// When user selects a type of cuisine it is saved as a variable
+// When user selects a type of cuisine it is saved as a variable and updated on the page
 function setUserCuisineChoice(event) {
     event.preventDefault();
     userSelectedCuisine = event.target;
@@ -182,7 +174,7 @@ function setUserCuisineChoice(event) {
     typeOfCuisineText.innerHTML = "Type of Cuisine: " + userSelectedCuisine;
 }
 
-
+// When user selects a genre of movie it is saved as a variable and updated on the page
 function setUserMovieChoice(event) {
     event.preventDefault();
     userSelectedMovie = event.target;
@@ -193,6 +185,7 @@ function setUserMovieChoice(event) {
 
 }
 
+// Fetches and displays the ingredients for the recipe
 function displayIngredientsBetter (recipeIdentifier) {
     fetch('https://api.spoonacular.com/recipes/' + recipeIdentifier + '/information?includeNutrition=false&apiKey=6bcf2249e71b4f518c9bc66ffb045b87')
         .then(function(response) {
@@ -209,9 +202,17 @@ function displayIngredientsBetter (recipeIdentifier) {
                 unorderedIngredientList.appendChild(ingredientNeeded);
             }
         });
+        return;
 }
 
+// Handles both searches for when the pick both button is pressed
+function pickBothHandle () {
+    getCuisineSelection();
+    createMovieQueryURL();
+}
 
-movieDropdown.addEventListener("click", setUserMovieChoice);
 cuisineDropdown.addEventListener("click", setUserCuisineChoice);
 cuisineOnlyButton.addEventListener("click", getCuisineSelection);
+movieDropdown.addEventListener("click", setUserMovieChoice);
+movieOnlyButton.addEventListener("click", createMovieQueryURL);
+pickBothButton.addEventListener("click", pickBothHandle);
