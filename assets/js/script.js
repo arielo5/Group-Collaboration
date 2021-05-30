@@ -3,6 +3,7 @@ let cuisineImgPlaceholder = document.querySelector("#cuisineImgPlaceholder");
 let cuisineOnlyButton = document.querySelector("#cuisineShBtn");
 let cuisinePicture = document.querySelector("#cuisinePicture");
 let ingredientString;
+let listOfIngredients;
 let orderedListForRecipe = document.querySelector("#orderedListForRecipe");
 let randomRecipeRequest;
 let recipeIdentifier;
@@ -15,8 +16,8 @@ let stepIngredients;
 let steps;
 let thingsToMake;
 let typeOfCuisineText = document.querySelector("#selectedTypeOfCuisineField");
+let unorderedIngredientList = document.querySelector("#listForIngredients");
 let userSelectedCuisine = "";
-
 let userSelectedMovie = "";
 let movieDropdown = document.querySelector("#movieDropdown");
 let typeOfMovieText = document.querySelector("#selectedTypeOfMovieField")
@@ -131,6 +132,7 @@ function getRandomRecipe(recipeRequestLink) {
             recipeTitleArea.innerHTML = recipeTitle;
             cuisinePicture.setAttribute("src", recipeImageLink);
             cuisineImgPlaceholder.setAttribute("class", "image is-3by4");
+            displayIngredientsBetter(recipeIdentifier);
             getRecipeDetails(recipeIdentifier);
         });
 }
@@ -140,52 +142,36 @@ function getCuisineSelection() {
     if (userSelectedCuisine === "" || userSelectedCuisine === "Random") {
         randomRecipeRequest = 'https://api.spoonacular.com/recipes/complexSearch?number=1&sort=random&type=main course&apiKey=6bcf2249e71b4f518c9bc66ffb045b87';
     } else {
-        console.log(userSelectedCuisine);
         randomRecipeRequest = 'https://api.spoonacular.com/recipes/complexSearch?number=1&sort=random&type=main course&cuisine=' + userSelectedCuisine + '&apiKey=6bcf2249e71b4f518c9bc66ffb045b87';
-        console.log(randomRecipeRequest);
     }
     getRandomRecipe(randomRecipeRequest);
 }
 
 // Goes through each of the steps for a recipe
 function goThroughRecipeSteps() {
+    clearRecipeArea();
     for (let i = 0; i < steps.length; i++) {
         stepDetails = steps[i].step;
         let listItem = document.createElement("LI");
         listItem.innerHTML = stepDetails;
         orderedListForRecipe.appendChild(listItem);
-        console.log(stepDetails);
-        if (steps[i].ingredients.length !== 0) {
-            stepIngredients = steps[i].ingredients;
-            parseIngredientsIntoString();
-        }
-    }
-}
-
-// Goes through each step and grabs all of the required ingredients and puts them into one string
-function parseIngredientsIntoString() {
-    ingredientString = "";
-    if (stepIngredients !== null) {
-        for (let i = 0; i < stepIngredients.length; i++) {
-            ingredient = stepIngredients[i].name;
-            if (ingredientString === "") {
-                ingredientString = ingredient;
-            } else {
-                ingredientString = ingredientString.concat(', ', ingredient);
-            }
-        }
-        let postedIngredientString = document.createElement("P");
-        postedIngredientString.innerHTML = '- Ingredients Needed: ' + ingredientString;
-        orderedListForRecipe.appendChild(postedIngredientString);
-        console.log(ingredientString);
     }
 }
 
 // Clears out the area containing recipe information so it can be populated cleanly
 function clearRecipeArea() {
-    do {
-        orderedListForRecipe.removeChild(orderedListForRecipe.childNodes[0]);
-    } while (orderedListForRecipe.firstChild);
+    for(let i = 0; i < orderedListForRecipe.children.length; i++){
+        orderedListForRecipe.removeChild(orderedListForRecipe.children[i]);
+        i--;
+    }
+}
+
+// Clears out the area containing required ingredients so it can be populated cleanly
+function clearIngredientArea() {
+    for(let i = 0; i < unorderedIngredientList.children.length; i++){
+        unorderedIngredientList.removeChild(unorderedIngredientList.children[i]);
+        i--;
+    }
 }
 
 // When user selects a type of cuisine it is saved as a variable
@@ -206,6 +192,25 @@ function setUserMovieChoice(event) {
     console.log(userSelectedMovieGenre);
 
 }
+
+function displayIngredientsBetter (recipeIdentifier) {
+    fetch('https://api.spoonacular.com/recipes/' + recipeIdentifier + '/information?includeNutrition=false&apiKey=6bcf2249e71b4f518c9bc66ffb045b87')
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(data) {
+            console.log(data);
+            clearIngredientArea()
+            listOfIngredients = data.extendedIngredients;
+            for(let i = 0; i < listOfIngredients.length; i++){
+                console.log(listOfIngredients[i].original);
+                let ingredientNeeded = document.createElement("LI");
+                ingredientNeeded.innerHTML = listOfIngredients[i].original;
+                unorderedIngredientList.appendChild(ingredientNeeded);
+            }
+        });
+}
+
 
 movieDropdown.addEventListener("click", setUserMovieChoice);
 cuisineDropdown.addEventListener("click", setUserCuisineChoice);
