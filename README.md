@@ -17,7 +17,7 @@
     ![IDK, You Pick Page Web Page](./assets/img/IDK_You_Pick_01.png/)
     ![IDK, You Pick Page Web Page](./assets/img/IDK_You_Pick_02.png/)
     ![IDK, You Pick Page Web Page](./assets/img/IDK_You_Pick_03.png/)
-    ![IDK, You Pick Page Web Page](.)assets/img/IDK_You_Pick_04.png/)
+    ![IDK, You Pick Page Web Page](./assets/img/IDK_You_Pick_04.png/)
 
  * API web pages
 
