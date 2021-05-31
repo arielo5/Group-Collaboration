@@ -2,6 +2,9 @@
     .navbar .container {
         justify-content: space-around;
     }
+    .pastBtn {
+        justify-content: space-around;
+    }
     
 }
 
@@ -59,4 +62,9 @@
 
 #release {
     color:white;
+}
+
+.image {
+    max-width: 100%;
+    width: auto;
 }
