@@ -285,30 +285,33 @@
       <p class="title has-text-centered is-size-2 pt-2">Past History</p>
       <div class="columns">
         <div class="column" id="pastMovieHistory">
-
-<<<<<<< HEAD
-          
-
         </div>
 
         <div class="column" id="pastCuisineHistory">
-
-          
-
-=======
-        </div>
-
-        <div class="column" id="pastCuisineHistory">
->>>>>>> 2430a3bb2783985c8a0d53cac2f285719b5abcff
         </div>
       </div>
 
     </div>
 
-    <button class="button is-large is-fullwidth is-danger is-rounded is-focused mt-0 mb-3" id="historyDelBtn">Delete
+    <button class="button is-large is-fullwidth is-danger is-rounded is-focused mt-0 mb-3" id="showModal">Delete
       History</button>
 
   </section>
+
+  <div class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+      <header class="modal-card-head">
+        <p class="modal-card-title has-text-centered">Are you sure you whant to delete the Past History?</p>
+        <button class="delete" aria-label="close"></button>
+      </header>
+      
+      <footer class="modal-card-foot is-justify-content-space-around">
+        <button class="button is-danger is-outlined" id="deleteModalBtn">Delete</button>
+        <button class="button" id="cancelModalBtn">Cancel</button>
+      </footer>
+    </div>
+  </div>
 
   <br>
 

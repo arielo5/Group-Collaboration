@@ -8,13 +8,22 @@
 
     On the Page you will see a top section with the title of the page and 2 drop down buttons that will display what type of movie and cuisine you will choose, below the header there is a bigger button section with 3 differen button one for picking only the movie another one for only picking the cuisine and the last one it will pick both at the smae time. Underneath it will appear side by side the generated movie with the title, an image of the movie, a brief description of the movie, rating and the realese date; similar one the right side it will show the name of the cuisine plate, an image, a list of ingridients and the recipe guide step by step. At the end it will save you the last 3 past searches for both movie and cuise in case you need to go back review them.
 
-## Links & Screenshots
+## Links, Screenshots & API
 
  * [IDK, You Pick Page Web Page](https://scoven2.github.io/Group-Collaboration/)
 
  * Screenshots of the web pages
 
-    ![IDK, You Pick Page Web Page](./assets/images/)
+    ![IDK, You Pick Page Web Page](assets\img\IDK_You_Pick_01.png)
+    ![IDK, You Pick Page Web Page](assets\img\IDK_You_Pick_02.png)
+    ![IDK, You Pick Page Web Page](assets\img\IDK_You_Pick_03.png)
+    ![IDK, You Pick Page Web Page](assets\img\IDK_You_Pick_04.png)
+
+ * API web pages
+
+    * [Movie API Web Page](https://www.themoviedb.org/documentation/api)
+
+    * [Recipe API Page Web Page](https://spoonacular.com/food-api)
     
 
 ## Repo Content

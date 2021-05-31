@@ -28,6 +28,7 @@ let typeOfMovieText = document.querySelector("#selectedTypeOfMovieField")
 let movieImgPlaceholder = document.querySelector("#movieImgPlaceholder");
 let userSelectedMovieGenre = "";
 let queryString;
+let deleteModalBtnElt = document.querySelector("#deleteModalBtn");
 
 
     let api_key = 'd748f076b1e977b08676c44b46816848';
@@ -450,6 +451,25 @@ function handlePastMovieAreaClick (event) {
 
 }
 
+// Deletes all past History Area using Modal
+function deleteItems() {
+    localStorage.clear();
+    location.reload()
+    $(".modal").removeClass("is-active");
+  }
+
+  $("#showModal").click(function() {
+    $(".modal").addClass("is-active");  
+  });
+  
+  $(".delete").click(function() {
+     $(".modal").removeClass("is-active");
+  });
+
+  $("#cancelModalBtn").click(function() {
+    $(".modal").removeClass("is-active");  
+  });
+
 cuisineDropdown.addEventListener("click", setUserCuisineChoice);
 cuisineOnlyButton.addEventListener("click", getCuisineSelection);
 movieDropdown.addEventListener("click", setUserMovieChoice);
@@ -457,6 +477,8 @@ movieOnlyButton.addEventListener("click", createMovieQueryURL);
 pickBothButton.addEventListener("click", pickBothHandle);
 pastCuisineArea.addEventListener("click", handlePastRecipeAreaClick);
 pastMovieArea.addEventListener("click", handlePastMovieAreaClick);
+deleteModalBtnElt.addEventListener("click", deleteItems);
 
 createRecipeButtons();
 createMovieButtons();
+
