@@ -10,7 +10,7 @@
 
 ## Links, Screenshots & API
 
- * [IDK, You Pick Page Web Page](https://scoven2.github.io/Group-Collaboration/)
+ * [IDK, You Pick Page Web Page](https://arielo5.github.io/Group-Collaboration/)
 
  * Screenshots of the web pages
 
